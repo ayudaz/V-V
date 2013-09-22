@@ -90,7 +90,7 @@ public class TestPhonyArrayList {
 		c.add(new String("toto"));
 		c.add(new String("titi"));
 		pal = new PhonyArrayList<Object>(c);
-		assertFalse(!pal.isEmpty());
+		assertFalse(pal.isEmpty());
 		
 	}
 	
