@@ -127,8 +127,6 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 			elementData = Arrays.copyOf(elementData, size, Object[].class);
 	}
 
-
-
 	private void ensureCapacityInternal(int minCapacity) {
 		if (elementData == EMPTY_ELEMENTDATA) {
 			minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
