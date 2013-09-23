@@ -316,7 +316,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 		ensureCapacityInternal(size + 1);  // Increments modCount!!
 		System.arraycopy(elementData, index, elementData, index + 1,
 				size - index);
-		size++;
+		elementData[index] = element;size++;
 	}
 
 	/**
