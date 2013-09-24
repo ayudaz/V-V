@@ -183,4 +183,46 @@ public class TestPhonyArrayList {
 		
 	}
 	
+	/**
+	* Tests the "{@link PhonyArrayList#clear()}" method 
+	* @see lemee-lelievre.PhonyArrayList#clear()
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testClear() { 
+		
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(titi);
+		pal.add(toto);
+		pal.add(tutu);
+				
+		pal.clear();
+		
+		int newSize = pal.size();
+				
+		assertEquals(newSize, 0);
+		
+		thrown.expect(IndexOutOfBoundsException.class);
+		thrown.expectMessage("Index: " + 0 + ", Size: " + pal.size());
+		
+		pal.get(0);
+		
+		thrown.expect(IndexOutOfBoundsException.class);
+		thrown.expectMessage("Index: " + 1 + ", Size: " + pal.size());
+		
+		pal.get(1);
+		
+		thrown.expect(IndexOutOfBoundsException.class);
+		thrown.expectMessage("Index: " + 2 + ", Size: " + pal.size());
+		
+		pal.get(2);
+
+	}
+	
 }
