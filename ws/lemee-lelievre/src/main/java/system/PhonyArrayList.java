@@ -205,7 +205,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 	 * @return <tt>true</tt> if this list contains the specified element
 	 */
 	public boolean contains(Object o) {
-		return indexOf(o) > 0;
+		return indexOf(o) >= 0;
 	}
 
 	/**

@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import  static org.junit.Assert.*;
 
+import  static org.junit.Assert.*;
 import  system.PhonyArrayList;
 
 /**
@@ -164,7 +164,7 @@ public class TestPhonyArrayList {
 	
 	/**
 	* Tests the "add" method which append a element E to the end of the list
-	* @see lemee-lelievre.PhonyArrayList#isEmpty()
+	* @see lemee-lelievre.PhonyArrayList#add()
 	* @type 
 	* @input 
 	* @oracle Must return "true"
@@ -177,7 +177,9 @@ public class TestPhonyArrayList {
 		
 		boolean bAdd = pal.add(new String("toto"));
 		
-		assert((taillePred + 1 == pal.size()) && bAdd);	
+		boolean bAdd2 = pal.add(new String("titi"));
+		
+		assert((taillePred + 2 == pal.size()) && bAdd);	
 		
 	}
 	
@@ -187,13 +189,7 @@ public class TestPhonyArrayList {
 	* @type 
 	* @input 
 	* @oracle Must return "true"
-	* @passed No
-	* @correction
-	* <pre>
-	* 
-	* 
-	* 
-	* </pre>
+	* @passed Yes
 	*/
 	@Test
 	public void testIndexOfOneOcc() {
@@ -201,10 +197,36 @@ public class TestPhonyArrayList {
 		String toto = new String("toto");
 		String titi = new String("titi");
 		
+		assert(pal.indexOf(toto) < 0);
+		
 		pal.add(toto);
 		
-		assert(pal.indexOf(toto) > 0);
+		assert(pal.indexOf(toto) == 0);
 		assert(pal.indexOf(titi) < 0);
+		
+	}
+	
+	/**
+	* Tests the "indexOf" method - test d'appartenance et de non appartenance d'un Object (null) présent qu'une fois
+	* @see lemee-lelievre.PhonyArrayList#indexOf()
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testIndexOfOneOccNull() {
+		
+		assert(pal.indexOf(null) < 0);
+		
+		String toto = new String("toto");
+		
+		pal.add(toto);
+		pal.add(null);
+		pal.add(toto);
+		pal.add(null);
+
+		assert(pal.indexOf(null) == 1);
 		
 	}
 	
@@ -227,7 +249,7 @@ public class TestPhonyArrayList {
 		pal.add(toto);
 				
 		assert(pal.indexOf(toto) == 0);
-		assert(pal.indexOf(titi) > 0);
+		assert(pal.indexOf(titi) == 1);
 		
 	}
 	
@@ -237,12 +259,83 @@ public class TestPhonyArrayList {
 	* @type 
 	* @input 
 	* @oracle Must return "true"
-	* @passed Yes
+	* @passed No
+	* @correction
+	* <pre>
+	* 	l.208
+	* 	- indexOf(o) > 0; 
+	*   + indexOf(o) >= 0;
+	* </pre>
 	*/
 	@Test
 	public void testContains() {
 		
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
 		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(toto);
+				
+		assert(pal.contains(toto));
+		assertFalse(pal.contains(tutu));
+		
+	}
+	
+	/**
+	* Tests the "lastIndexOf" method - test d'appartenance et de non appartenance d'un Object présent qu'une fois
+	*  - test d'appartenance et de non appartenance d'un Object présent plusieur fois
+	* @see lemee-lelievre.PhonyArrayList#lastIndexOf(Object o)
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed No
+	* @correction
+	* <pre>
+	* 	
+	* </pre>
+	*/
+	@Test
+	public void testLastIndexOfOneOcc() {
+		
+		String toto = new String("toto");
+		String titi = new String("titi");
+		
+		assert(pal.lastIndexOf(toto) < 0);
+		
+		pal.add(toto);
+		
+		assert(pal.lastIndexOf(toto) == 0);
+		assert(pal.lastIndexOf(titi) < 0);
+		
+	}
+	
+	/**
+	* Tests the "lastIndexOf" method - test d'appartenance et de non appartenance d'un Object présent plusieur fois
+	* @see lemee-lelievre.PhonyArrayList#lastIndexOf(Object o)
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed No
+	* @correction
+	* <pre>
+	* 	
+	* </pre>
+	*/
+	@Test
+	public void testLastIndexOfMultiOcc() {
+		
+//		String toto = new String("toto");
+//		String titi = new String("titi");
+//		String tutu = new String("tutu");
+//		
+//		pal.add(toto);
+//		pal.add(titi);
+//		pal.add(tutu);
+//
+//		assert(pal.indexOf(toto) == 2);
+//		assert(pal.indexOf(titi) == 1);
 		
 	}
 	
