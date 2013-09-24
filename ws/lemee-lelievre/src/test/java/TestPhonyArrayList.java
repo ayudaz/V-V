@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import  static org.junit.Assert.*;
+
 import  system.PhonyArrayList;
 
 /**
@@ -14,17 +15,18 @@ import  system.PhonyArrayList;
  */
 
 /**
- * Cas de test de la classe {@link TestPhonyArrayList}
- * @author Thomas LELIEVRE - Anthony LE MÉE (13000170 - 10003134)
+ * test Case of {@link TestPhonyArrayList}
+ * @author Thomas LELIEVRE - Anthony LE MEE (13000170 - 10003134)
  * @since 20/09/2013
  */
 public class TestPhonyArrayList {
+	
 
-	/** Attributs de la classe */
+	/** Class Attributes */
 	private PhonyArrayList<Object> pal;
 	
 	/**
-	 * Exécuté avant chaque test
+	 * Executed before each test
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -35,7 +37,7 @@ public class TestPhonyArrayList {
 	}
 
 	/**
-	 * Exécuté après chaque test
+	 * Executed after each test
 	 * @throws java.lang.Exception
 	 */
 	@After
@@ -97,7 +99,7 @@ public class TestPhonyArrayList {
 	* Tests the "PhonyArrayList" constructor with full "Collection" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(Collection)
 	* @type 
-	* @input ArrayList de deux éléments : String("toto") et String ("titi")
+	* @input ArrayList with two elements : String("toto") and String ("titi")
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
@@ -184,7 +186,8 @@ public class TestPhonyArrayList {
 	}
 	
 	/**
-	* Tests the "indexOf" method - test d'appartenance et de non appartenance d'un Object présent qu'une fois
+	* Tests the "indexOf" method - test membership and not membership to an 
+	* Object that is present only once
 	* @see lemee-lelievre.PhonyArrayList#indexOf()
 	* @type 
 	* @input 
@@ -231,7 +234,8 @@ public class TestPhonyArrayList {
 	}
 	
 	/**
-	* Tests the "indexOf" method - test d'appartenance et de non appartenance d'un Object présent plusieur fois
+	* Tests the "indexOf" method - test membership and not memberships to an 
+	* object that is present several times
 	* @see lemee-lelievre.PhonyArrayList#indexOf()
 	* @type 
 	* @input 

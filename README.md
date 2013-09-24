@@ -14,6 +14,6 @@ Pour répartir les méthodes a tester il faut utiliser le document :
 https://docs.google.com/spreadsheet/ccc?key=0AiX6fV5m3z13dFo0R0VSZXllaGt5MktFUEgyemFqUXc&usp=sharing
 
 En mettant le nom de la méthode et son nom à coté, et "en cours" en dernière colonne.
-Une fois les tests finis sur cette méthode, on met "Oui" dans la dernière colonne.
+Une fois les tests finis sur cette méthode, on fait un commit puis on met "Oui" dans la dernière colonne.
 
 Si on a pas fini une méthode mais qu'on veut passer à une autre méthode, on met "Non", ce qui permet à l'autre (éventuellement) de reprendre cette méthode :)
