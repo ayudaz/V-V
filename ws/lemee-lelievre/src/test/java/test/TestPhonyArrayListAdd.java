@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
-
 import system.PhonyArrayList;
 
 /**
@@ -196,4 +195,22 @@ public class TestPhonyArrayListAdd {
 		assertTrue(pal3.size() == 3);
 		assertEquals(pal3.get(index), obj);
 	}
+	
+	/**
+	* Tests the "Add" method which append a element E to the end of the list
+	* @see lemee-lelievre.PhonyArrayList#add()
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testAdd() {
+
+		int taillePred 	= pal.size();
+		boolean bAdd 	= pal.add(new String("toto"));	
+		assert((taillePred + 1 == pal.size()) && bAdd);	
+		
+	}
+	
 }
