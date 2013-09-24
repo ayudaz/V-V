@@ -285,7 +285,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 		rangeCheck(index);
 
 		E oldValue = elementData(index);
-		elementData[++index] = element;
+		elementData[index] = element;
 		return oldValue;
 	}
 

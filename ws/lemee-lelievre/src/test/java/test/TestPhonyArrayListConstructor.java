@@ -3,9 +3,15 @@
  */
 package test;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -95,6 +101,24 @@ public class TestPhonyArrayListConstructor {
 		pal = new PhonyArrayList<Object>(c);
 		assert(pal != null);
 		
+	}
+	
+	/**
+	* Tests the "{@link PhonyArrayList#lastIndexOf(Collection)}" constructor with non object Element
+	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(Collection)
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testPhonyArrayListCollectionOfQextendsE() {
+		
+		Collection<String> c1 	= new PhonyArrayList<String>();
+		Collection<String> c2 	= new PhonyArrayList<String>();
+		c1 = new PhonyArrayList(Arrays.asList(c2));
+		assert(c1 != null);
+	
 	}
 	
 	/**
