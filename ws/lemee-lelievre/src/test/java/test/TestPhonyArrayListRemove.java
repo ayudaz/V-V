@@ -32,6 +32,8 @@ public class TestPhonyArrayListRemove {
 
 	@Before
 	public void setUp() throws Exception {
+		objToto = "Toto";
+		objTata = "Tata";
 		palEmpty = new PhonyArrayList<Object>();
 		palOneElement = new PhonyArrayList<Object>(1);
 		palOneElement.add(objToto);
@@ -136,15 +138,68 @@ public class TestPhonyArrayListRemove {
 		assertTrue(palTwoElement.size() == 2);
 		Object o = palTwoElement.remove(index);
 		assertTrue(palTwoElement.size() == 1);
-		assertEquals(objToto, o);
+		assertEquals(objTata, o);
 	}
 	
-/*
-	@Test
-	public final void testRemoveObject() {
-		fail("Not yet implemented"); // TODO
-	}
 
+	/**
+	 * Tests remove(object) method on an empty List
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveObjectWithListEmpty() {
+		assertTrue(palEmpty.size() == 0);
+		assertFalse(palEmpty.contains(objToto));
+		palEmpty.remove(objToto);
+		assertTrue(palEmpty.size() == 0);
+		assertFalse(palEmpty.contains(objToto));
+	}
+	
+	/**
+	 * Tests remove(object) method on an one element list with an object who
+	 * are not in the list
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveObjectNotInOneElementList() {
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		assertFalse(palOneElement.contains(objTata));
+		palEmpty.remove(objTata);
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		assertFalse(palOneElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(object) method on an one element list with an object who
+	 * are in the list
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveObjectInOneElementList() {
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		System.out.println(palOneElement);
+		palEmpty.remove(objToto);
+		assertTrue(palOneElement.size() == 1);
+		System.out.println(palOneElement);
+		assertFalse(palOneElement.contains(objToto));
+	}
+	
+	/*
 	@Test
 	public final void testRemoveAllCollectionOfQ() {
 		fail("Not yet implemented"); // TODO
