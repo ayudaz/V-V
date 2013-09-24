@@ -58,6 +58,8 @@ public class TestPhonyArrayListLastIndexOf {
 	@Test
 	public void testLastIndexOfOneOcc() {
 		
+		assert(pal.lastIndexOf(null) < 0);
+		
 		String toto = new String("toto");
 		String titi = new String("titi");
 		
@@ -68,6 +70,15 @@ public class TestPhonyArrayListLastIndexOf {
 		assert(pal.lastIndexOf(toto) == 0);
 		assert(pal.lastIndexOf(titi) < 0);
 		
+		pal.add(titi);
+		
+		assert(pal.lastIndexOf(toto) == 0);
+		assert(pal.lastIndexOf(titi) == 1);
+		
+		pal.add(null);
+		
+		assert(pal.lastIndexOf(null) == pal.size() - 1);
+		
 	}
 	
 	/**
@@ -77,25 +88,29 @@ public class TestPhonyArrayListLastIndexOf {
 	* @type 
 	* @input 
 	* @oracle Must return "true"
-	* @passed No
-	* @correction
-	* <pre>
-	* 	
-	* </pre>
+	* @passed Yes
 	*/
 	@Test
 	public void testLastIndexOfMultiOcc() {
 		
-//		String toto = new String("toto");
-//		String titi = new String("titi");
-//		String tutu = new String("tutu");
-//		
-//		pal.add(toto);
-//		pal.add(titi);
-//		pal.add(tutu);
-//
-//		assert(pal.indexOf(toto) == 2);
-//		assert(pal.indexOf(titi) == 1);
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(null);
+		pal.add(toto);
+		pal.add(null);
+		pal.add(tutu);
+		
+		int test1 = pal.lastIndexOf(toto);
+		int test2 = pal.lastIndexOf(titi);
+		int test3 = pal.lastIndexOf(null);
+		
+		assert(test1 == 3 && test1 >= 0 && test1 <= pal.size() - 1);
+		assert(test2 == 1 && test1 >= 0 && test1 <= pal.size() - 1);
+		assert(test3 == pal.size() - 2 && test1 >= 0 && test1 <= pal.size() - 1);
 		
 	}
 	
