@@ -560,7 +560,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 		int r = 0, w = 0;
 		boolean modified = false;
 		try {
-			for (; r < size-1; r++)
+			for (; r < size; r++)
 				if (c.contains(elementData[r]) == complement)
 					elementData[w++] = elementData[r];
 		} finally {

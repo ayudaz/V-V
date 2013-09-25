@@ -2,6 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -306,17 +309,180 @@ public class TestPhonyArrayListRemove {
 		assertTrue(palOneElement.contains(objToto));
 		assertTrue(palOneElement.contains(objTata));
 		assertTrue(palOneElement.contains(null));
-		System.out.println(palOneElement);
 		assertTrue(palOneElement.lastIndexOf(null) == 2);
 		assertTrue(palOneElement.indexOf(null) == 2);
 	}
 	
-	/*
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects who are
+	 * not in the one element list.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
 	@Test
-	public final void testRemoveAllCollectionOfQ() {
-		fail("Not yet implemented"); // TODO
+	public final void testRemoveAllCollectionOfObjectNotInOneElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object gli = "GLI";
+		Object trois = 3;
+		objList.add(gli);
+		objList.add(trois);
+		assertFalse(palOneElement.contains(gli));
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		palOneElement.removeAll(objList);
+		assertTrue(palOneElement.size() == 1);
+		assertFalse(palOneElement.contains(gli));
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.contains(objToto));
 	}
-
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects who are
+	 * not in the two element list.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfObjectNotInTwoElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object gli = "GLI";
+		Object trois = 3;
+		objList.add(gli);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(gli));
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertFalse(palTwoElement.removeAll(objList));
+		assertTrue(palTwoElement.size() == 2);
+		assertFalse(palTwoElement.contains(gli));
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects where 
+	 * one element is in the one element list.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed No
+	 * <pre>
+	 * l.563
+	 * - for (; r < size+1; r++)
+	 * + for (; r < size; r++)
+	 * </pre>
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfObjectInOneElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(trois);
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		assertTrue(palOneElement.removeAll(objList));
+		assertTrue(palOneElement.size() == 0);
+		assertFalse(palOneElement.contains(trois));
+		assertFalse(palOneElement.contains(objToto));
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects where 
+	 * one element is in the two element list.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfObjectInTwoElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.removeAll(objList));
+		assertTrue(palTwoElement.size() == 1);
+		assertFalse(palTwoElement.contains(trois));
+		assertFalse(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects where 
+	 * two elements is in a three element list.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfObjectInThreeElementList() {
+		palTwoElement.add("Titi");
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(objTata);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 3);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.removeAll(objList));
+		assertTrue(palTwoElement.size() == 1);
+		assertFalse(palTwoElement.contains(trois));
+		assertFalse(palTwoElement.contains(objToto));
+		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of objects where 
+	 * two elements is in a three element list who have two elements identical
+	 * who must be deleted.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfObjectInThreeElementList2() {
+		palTwoElement.add(objToto);
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(objTata);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 3);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.removeAll(objList));
+		assertTrue(palTwoElement.size() == 0);
+		assertFalse(palTwoElement.contains(trois));
+		assertFalse(palTwoElement.contains(objToto));
+		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/*
 	@Test
 	public final void testRetainAllCollectionOfQ() {
 		fail("Not yet implemented"); // TODO
