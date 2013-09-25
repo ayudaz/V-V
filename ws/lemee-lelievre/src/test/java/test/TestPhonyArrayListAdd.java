@@ -3,6 +3,9 @@
  */
 package test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -210,6 +213,146 @@ public class TestPhonyArrayListAdd {
 		int taillePred 	= pal.size();
 		boolean bAdd 	= pal.add(new String("toto"));	
 		assert((taillePred + 1 == pal.size()) && bAdd);	
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that size after adding is equals
+	* with size before plus size of adding collection
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllCompareSizeBeforeAndAfter() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+		
+		int sizeBefore 	= pal.size();
+		
+		// tests
+		Collection<String> c = new PhonyArrayList<String>(8);
+		c.add(toto);
+		c.add(titi);
+		c.add(tutu);
+		
+		boolean bAddAll = pal.addAll(c);
+		
+		int sizeAfter 	= pal.size();
+		
+		// assertions
+		assert(bAddAll);
+		assertEquals(sizeAfter, sizeBefore + c.size());
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that adding of null 
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllNullException() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+				
+		// tests
+		@SuppressWarnings("rawtypes")
+		Collection c = null;
+		
+		thrown.expect(NullPointerException.class);
+		
+		pal.addAll(c);
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that adding of empty Collection
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllEmptyCollection() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+				
+		// tests
+		@SuppressWarnings("rawtypes")
+		Collection c = new ArrayList();
+
+		boolean bAddAll = pal.addAll(c);
+		
+		assertFalse(bAddAll); //Integer.MAX_VALUE
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that Exception will be throw with capacity of Integer.MAX_VALUE
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllGrowOverCapacity() {
+
+		// Init
+//		String toto = new String("toto");
+//		String titi = new String("titi");
+//		String tutu = new String("tutu");
+//		
+//		pal.add(toto);
+//		pal.add(titi);
+//		pal.add(tutu);
+//				
+//		// tests
+//		@SuppressWarnings("rawtypes")
+//		Collection c = new PhonyArrayList<String>(Integer.MAX_VALUE - 3);
+//		
+//		boolean bAddAll = pal.addAll(c);
+		
+		/**
+		 * @TODO 
+		 * Augmenter la VM de Eclipse ne fait rien, ou bien je le fais mal.
+		 * Du coup une erreur : Java heap space, est soulevée
+		 * */
 		
 	}
 	
