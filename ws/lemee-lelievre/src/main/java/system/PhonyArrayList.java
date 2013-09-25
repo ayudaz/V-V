@@ -359,7 +359,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 	public boolean remove(Object o) {
 		if (o == null) {
 			for (int index = 0; index < size; index++)
-				if (elementData[index] != null) {
+				if (elementData[index] == null) {
 					fastRemove(index);
 					return true;
 				}

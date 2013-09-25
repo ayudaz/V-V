@@ -192,11 +192,123 @@ public class TestPhonyArrayListRemove {
 	public final void testRemoveObjectInOneElementList() {
 		assertTrue(palOneElement.size() == 1);
 		assertTrue(palOneElement.contains(objToto));
+		palOneElement.remove(objToto);
+		assertTrue(palOneElement.size() == 0);
+		assertFalse(palOneElement.contains(objToto));
+	}
+	
+	/**
+	 * Tests remove(object) method on a two elements list with an object who
+	 * are in the first position of the list.
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveFirstObjectInTwoElementList() {
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		palTwoElement.remove(objToto);
+		assertTrue(palTwoElement.size() == 1);
+		assertFalse(palTwoElement.contains(objToto));
+	}
+	
+	/**
+	 * Tests remove(object) method on a two elements list with an object who
+	 * are in the second position of the list.
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveSecondObjectInTwoElementList() {
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objTata));
+		palTwoElement.remove(objTata);
+		assertTrue(palTwoElement.size() == 1);
+		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(object) method with a null object on a list who don't 
+	 * contain a null object.
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed No
+	 * <pre>
+	 * l.362
+	 * - if (elementData[index] != null) {
+	 * + if (elementData[index] == null) {
+	 * </pre>
+	 */
+	@Test
+	public final void testRemoveNullObjectInTwoElementList() {
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		palTwoElement.remove(null);
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(object) method with a null object on a list who contain a
+	 * null object.
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveNullObjectInTwoElementList2() {
+		palTwoElement.add(null);
+		assertTrue(palTwoElement.size() == 3);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.contains(null));
+		palTwoElement.remove(null);
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertFalse(palTwoElement.contains(null));
+	}
+	
+	/**
+	 * Tests remove(object) method with a null object on a list who contain 
+	 * some null objects.
+	 * @see lemee-lelievre.PhonyArrayList#remove(object)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveNullObjectInTwoElementList3() {
+		palOneElement.add(null);
+		palOneElement.add(objTata);
+		palOneElement.add(null);
+		assertTrue(palOneElement.size() == 4);
+		assertTrue(palOneElement.contains(objToto));
+		assertTrue(palOneElement.contains(objTata));
+		assertTrue(palOneElement.contains(null));
+		assertTrue(palOneElement.indexOf(null) == 1);
+		assertTrue(palOneElement.lastIndexOf(null) == 3);
+		palOneElement.remove(null);
+		assertTrue(palOneElement.size() == 3);
+		assertTrue(palOneElement.contains(objToto));
+		assertTrue(palOneElement.contains(objTata));
+		assertTrue(palOneElement.contains(null));
 		System.out.println(palOneElement);
-		palEmpty.remove(objToto);
-		assertTrue(palOneElement.size() == 1);
-		System.out.println(palOneElement);
-		//assertFalse(palOneElement.contains(objToto));
+		assertTrue(palOneElement.lastIndexOf(null) == 2);
+		assertTrue(palOneElement.indexOf(null) == 2);
 	}
 	
 	/*
