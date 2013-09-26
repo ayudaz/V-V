@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeSet;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -480,6 +481,54 @@ public class TestPhonyArrayListRemove {
 		assertFalse(palTwoElement.contains(trois));
 		assertFalse(palTwoElement.contains(objToto));
 		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of String where 
+	 * on a list of three Integer.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfStringInThreeElementIntegerList() {
+		PhonyArrayList<Integer> palInt = new PhonyArrayList<Integer>(3);
+		palInt.add(1);
+		palInt.add(2);
+		palInt.add(3);
+		Collection<String> stringColl = new TreeSet<String>();
+		stringColl.add("Toto");
+		stringColl.add("Tata");
+		
+		assertTrue(palInt.size() == 3);
+		thrown.expect(ClassCastException.class);
+		palInt.removeAll(stringColl);
+	}
+	
+	/**
+	 * Tests remove(Collection<?>) method with a collection of String where 
+	 * on a list of three Integer.
+	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRemoveAllCollectionOfStringInThreeElementIntegerList2() {
+		PhonyArrayList<Object> palInt = new PhonyArrayList<Object>(3);
+		palInt.add("Tata");
+		palInt.add(2);
+		palInt.add(3);
+		
+		Collection<String> stringColl = new TreeSet<String>();
+		stringColl.add("Tata");
+		
+		assertTrue(palInt.size() == 3);
+		thrown.expect(ClassCastException.class);
+		palInt.removeAll(stringColl);
 	}
 	
 	/*
