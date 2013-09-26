@@ -51,7 +51,7 @@ public class TestPhonyArrayListIsEmpty {
 	* Tests the "{@link PhonyArrayList#isEmpty()}" method when 
 	* "this.elementData = EMPTY_ELEMENTDATA"
 	* @see lemee-lelievre.PhonyArrayList#isEmpty()
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes
@@ -67,7 +67,7 @@ public class TestPhonyArrayListIsEmpty {
 	* Tests the "{@link PhonyArrayList#isEmpty()}" method when 
 	* "this.elementData != EMPTY_ELEMENTDATA"
 	* @see lemee-lelievre.PhonyArrayList#isEmpty()
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes

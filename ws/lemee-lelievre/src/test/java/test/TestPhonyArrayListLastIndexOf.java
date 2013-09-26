@@ -46,8 +46,8 @@ public class TestPhonyArrayListLastIndexOf {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Object)}" method - test membership and not membership to an 
 	* Object that is present only once
 	* @see lemee-lelievre.PhonyArrayList#lastIndexOf(Object o)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input "toto" & "titi"
 	* @oracle Must return "true"
 	* @passed No
 	* @correction
@@ -85,8 +85,8 @@ public class TestPhonyArrayListLastIndexOf {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Object)}" method - test membership and not memberships to an 
 	* object that is present several times
 	* @see lemee-lelievre.PhonyArrayList#lastIndexOf(Object o)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input "toto" & "titi" & null
 	* @oracle Must return "true"
 	* @passed Yes
 	*/

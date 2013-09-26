@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import system.PhonyArrayList;
 
 /**
- * test Case of {@link TestPhonyArrayList}
+ * test Case of {@link PhonyArrayList}
  * @author Thomas LELIEVRE - Anthony LE MEE (13000170 - 10003134)
  * @since 20/09/2013
  */
@@ -46,10 +46,10 @@ public class TestPhonyArrayList {
 	}
 	
 	/**
-	* Tests the "contains" method 
-	* @see lemee-lelievre.PhonyArrayList#contains()
-	* @type 
-	* @input 
+	* Tests the "{@link PhonyArrayList#contains(Object)}" method 
+	* @see lemee-lelievre.PhonyArrayList#contains(Object)
+	* @type Functional
+	* @input "Toto"&"Tuto"
 	* @oracle Must return "true"
 	* @passed No
 	* @correction
@@ -70,7 +70,7 @@ public class TestPhonyArrayList {
 		pal.add(titi);
 		pal.add(toto);
 				
-		assert(pal.contains(toto));
+		assertTrue(pal.contains(toto));
 		assertFalse(pal.contains(tutu));
 		
 	}	
@@ -78,8 +78,8 @@ public class TestPhonyArrayList {
 	/**
 	* Tests the "{@link PhonyArrayList#get(int)}" method 
 	* @see lemee-lelievre.PhonyArrayList#get(int)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input 0
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
@@ -101,8 +101,8 @@ public class TestPhonyArrayList {
 	* Tests the "{@link PhonyArrayList#get(int)}" method with 
 	* wrong index parameter
 	* @see lemee-lelievre.PhonyArrayList#get(int)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input 2
 	* @oracle Must return throw IndexOutOfBoundsException
 	* @passed Yes
 	*/
@@ -125,8 +125,8 @@ public class TestPhonyArrayList {
 	* Tests the "{@link PhonyArrayList#set(int, Object)}" method with 
 	* wrong index parameter
 	* @see lemee-lelievre.PhonyArrayList#set(int, Object)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input 2,"titi"
 	* @oracle Must return throw IndexOutOfBoundsException
 	* @passed Yes
 	*/
@@ -149,8 +149,8 @@ public class TestPhonyArrayList {
 	/**
 	* Tests the "{@link PhonyArrayList#set(int, Object)}" method 
 	* @see lemee-lelievre.PhonyArrayList#set(int, Object)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input 1,"titi"
 	* @oracle Must return "true"
 	* @passed No
 	* @correction
@@ -186,7 +186,7 @@ public class TestPhonyArrayList {
 	/**
 	* Tests the "{@link PhonyArrayList#clear()}" method 
 	* @see lemee-lelievre.PhonyArrayList#clear()
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes

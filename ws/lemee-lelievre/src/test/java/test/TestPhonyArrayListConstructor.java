@@ -3,15 +3,10 @@
  */
 package test;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -56,7 +51,7 @@ public class TestPhonyArrayListConstructor {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(int)}" constructor with illegal 
 	* "Capacity" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(int)
-	* @type 
+	* @type Functional
 	* @input -1
 	* @oracle Must return throw IllegalArgumentException
 	* @passed Yes
@@ -72,7 +67,7 @@ public class TestPhonyArrayListConstructor {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(int)}" constructor with correct 
 	* "Capacity" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(int)
-	* @type 
+	* @type Functional
 	* @input 8
 	* @oracle Must return "true"
 	* @passed Yes
@@ -89,7 +84,7 @@ public class TestPhonyArrayListConstructor {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Collection)}" constructor with 
 	* empty "Collection" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(Collection)
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes
@@ -106,7 +101,7 @@ public class TestPhonyArrayListConstructor {
 	/**
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Collection)}" constructor with non object Element
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(Collection)
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes
@@ -114,9 +109,9 @@ public class TestPhonyArrayListConstructor {
 	@Test
 	public void testPhonyArrayListCollectionOfQextendsE() {
 		
-		Collection<String> c1 	= new PhonyArrayList<String>();
-		Collection<String> c2 	= new PhonyArrayList<String>();
-		c1 = new PhonyArrayList(Arrays.asList(c2));
+		PhonyArrayList<Object> c1 	= new PhonyArrayList<Object>();
+		Collection<Object> c2 	= new PhonyArrayList<Object>();
+		c1 = new PhonyArrayList<Object>(Arrays.asList(c2));
 		assert(c1 != null);
 	
 	}
@@ -125,7 +120,7 @@ public class TestPhonyArrayListConstructor {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Collection)}" constructor with 
 	* full "Collection" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(Collection)
-	* @type 
+	* @type Functional
 	* @input ArrayList with two elements : String("toto") and String ("titi")
 	* @oracle Must return "true"
 	* @passed Yes
@@ -145,7 +140,7 @@ public class TestPhonyArrayListConstructor {
 	* Tests the "{@link PhonyArrayList#lastIndexOf(Collection)}" constructor with 
 	* illegal "Collection" parameter.
 	* @see lemee-lelievre.PhonyArrayList#PhonyArrayList(int)
-	* @type 
+	* @type Functional
 	* @input -1
 	* @oracle Must return throw NullPointerException
 	* @passed Yes

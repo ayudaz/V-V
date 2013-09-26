@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 import system.PhonyArrayList;
 
 /**
- * Test case of the two Add methods of PhonyArrayList 
+ * Test case of the two Add methods of {@link PhonyArrayList}
  * @author Thomas LELIEVRE - Anthony LE MEE (13000170 - 10003134)
  * @since 20/09/2013
  *
@@ -46,11 +46,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add at a negative position.
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add at a 
+	 * negative position.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input -1,"Toto"
+	 * @oracle Must return throw IndexOutOfBoundsException
 	 * @passed Yes
 	 */
 	@Test
@@ -63,12 +64,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add at a position greater than the size of
-	 * the list.
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add at a 
+	 * position greater than the size of the list.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 1, "Toto"
+	 * @oracle Must return throw IndexOutOfBoundsException
 	 * @passed yes
 	 */
 	@Test
@@ -81,13 +82,14 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in an empty list at the first 
-	 * position. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object 
+	 * in an empty list at the first position. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 0, "Toto"
+	 * @oracle Must return "true"
 	 * @passed no
+	 * @correction
 	 * <pre>
 	 * l.319
 	 * - size++;
@@ -105,12 +107,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in a list of one element at the
-	 * first position. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object in
+	 * a list of one element at the first position. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 0, "Titi"
+	 * @oracle Must return "true"
 	 * @passed yes
 	 */
 	@Test
@@ -124,12 +126,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in a list of one element at the
-	 * end of the list. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object 
+	 * in a list of one element at the end of the list. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 1, "Titi"
+	 * @oracle Must return "true"
 	 * @passed yes
 	 */
 	@Test
@@ -143,12 +145,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in a list of two element at the
-	 * first position. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object in
+	 * a list of two element at the first position. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 0, "Tata"
+	 * @oracle Must return "true"
 	 * @passed yes
 	 */
 	@Test
@@ -162,12 +164,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in a list of two element at the
-	 * middle position. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object 
+	 * in a list of two element at the middle position. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 1, "Tata"
+	 * @oracle Must return "true"
 	 * @passed yes
 	 */
 	@Test
@@ -181,12 +183,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	 * Tests the "Add" method when add object in a list of two element at the
-	 * end position. 
+	 * Tests the "{@link PhonyArrayList#Add(int, E)}" method when add object in
+	 * a list of two element at the end position. 
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 2, "Tata"
+	 * @oracle Must return "true"
 	 * @passed yes
 	 */
 	@Test
@@ -200,10 +202,11 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	* Tests the "Add" method which append a element E to the end of the list
+	* Tests the "{@link PhonyArrayList#Add(int, E)}" method which append a 
+	* element E to the end of the list.
 	* @see lemee-lelievre.PhonyArrayList#add()
-	* @type 
-	* @input 
+	* @type Functional
+	* @input "Toto"
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
@@ -217,12 +220,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	* Tests the "AddAll" method which certify that size after adding is equals
-	* with size before plus size of adding collection
-	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
-	* @type 
-	* @input 
+	* Tests the "{@link PhonyArrayList#addAll(Collection<?>)}" method which 
+	* certify that size after adding is equals with size before plus size of
+	* adding collection specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection<?>)
+	* @type Functional
+	* @input c
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
@@ -257,12 +260,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	* Tests the "AddAll" method which certify that adding of null 
-	* Collection throw NullPointerException
+	* Tests the "{@link PhonyArrayList#addAll(Collection<?>)}" method which 
+	* certify that adding of null Collection throw NullPointerException
 	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
-	* @type 
-	* @input 
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection<?>)
+	* @type Functional
+	* @input null
 	* @oracle Must throw NullPointerException
 	* @passed Yes
 	*/
@@ -279,8 +282,7 @@ public class TestPhonyArrayListAdd {
 		pal.add(tutu);
 				
 		// tests
-		@SuppressWarnings("rawtypes")
-		Collection c = null;
+		Collection<Object> c = null;
 		
 		thrown.expect(NullPointerException.class);
 		
@@ -290,11 +292,10 @@ public class TestPhonyArrayListAdd {
 	
 	/**
 	* Tests the "AddAll" method which certify that adding of empty Collection
-	* Collection throw NullPointerException
-	* specified collection's Iterator.
+	* Collection.
 	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
-	* @type 
-	* @input 
+	* @type Functional
+	* @input c
 	* @oracle Must throw NullPointerException
 	* @passed Yes
 	*/
@@ -311,8 +312,7 @@ public class TestPhonyArrayListAdd {
 		pal.add(tutu);
 				
 		// tests
-		@SuppressWarnings("rawtypes")
-		Collection c = new ArrayList();
+		Collection<Object> c = new ArrayList<Object>();
 
 		boolean bAddAll = pal.addAll(c);
 		
@@ -321,11 +321,12 @@ public class TestPhonyArrayListAdd {
 	}
 	
 	/**
-	* Tests the "AddAll" method which certify that Exception will be throw with capacity of Integer.MAX_VALUE
+	* Tests the "AddAll" method which certify that Exception will be throw with
+	*  capacity of Integer.MAX_VALUE
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
-	* @type 
+	* @type Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed Yes
@@ -350,12 +351,6 @@ public class TestPhonyArrayListAdd {
 //		
 //		boolean bAddAll = pal.addAll(c);
 		
-		/**
-		 * @TODO 
-		 * Augmenter la VM de Eclipse ne fait rien, ou bien je le fais mal.
-		 * Du coup une erreur : Java heap space, est soulev�e
-		 * */
-		
 	}
 	
 	/**
@@ -363,7 +358,7 @@ public class TestPhonyArrayListAdd {
 	* with size before plus size of adding collection
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must return "true"
 	* @passed Yes
@@ -403,7 +398,7 @@ public class TestPhonyArrayListAdd {
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int,Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed Yes
@@ -421,8 +416,7 @@ public class TestPhonyArrayListAdd {
 		pal.add(tutu);
 				
 		// tests
-		@SuppressWarnings("rawtypes")
-		Collection c = new ArrayList();
+		Collection<Object> c = new ArrayList<Object>();
 
 		boolean bAddAll = pal.addAll(1,c);
 		
@@ -435,7 +429,7 @@ public class TestPhonyArrayListAdd {
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed Yes
@@ -453,8 +447,7 @@ public class TestPhonyArrayListAdd {
 		pal.add(tutu);
 				
 		// tests
-		@SuppressWarnings("rawtypes")
-		Collection c = null;
+		Collection<Object> c = null;
 		
 		thrown.expect(NullPointerException.class);
 		
@@ -462,58 +455,13 @@ public class TestPhonyArrayListAdd {
 		
 	}
 	
-	/**
-	* Tests the "AddAll" method which test the throw of IndexOutOfBoundsException with wrong index
-	* with size before plus size of adding collection
-	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
-	* @type 
-	* @input 
-	* @oracle Must return "true"
-	* @passed Yes
-	*/
-	@Test
-	public void testAddAllAtPositionOutOfBoundsException() {
-
-		// Init
-//		String toto = new String("toto");
-//		String titi = new String("titi");
-//		String tutu = new String("tutu");
-//		
-//		pal.add(toto);
-//		pal.add(titi);
-//		pal.add(tutu);
-//		
-//		int sizeBefore 	= pal.size();
-//		
-//		// tests
-//		Collection<String> c = new PhonyArrayList<String>(8);
-//		c.add(toto);
-//		c.add(titi);
-//		c.add(tutu);
-//		
-//		boolean bAddAll = pal.addAll(pal.size(), c);
-//		
-//		int sizeAfter 	= pal.size();
-//				
-//		// assertions
-//		assert(bAddAll);
-//		assertEquals(sizeAfter, sizeBefore + c.size());
-//		
-//		// tests
-//		thrown.expect(IndexOutOfBoundsException.class);
-//		thrown.expectMessage("Index: " + pal.size() + 1 + ", Size: " + pal.size());
-//		
-//		pal.addAll(pal.size() + 1, c);
-		
-	}
 	
 	/**
 	* Tests the "AddAll" append with index equals to source Collection size
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed Yes
@@ -533,7 +481,6 @@ public class TestPhonyArrayListAdd {
 		int sizeBefore = pal.size();
 		
 		// tests
-		@SuppressWarnings("rawtypes")
 		ArrayList<String> c = new ArrayList<String>();
 
 		c.add(toto);
@@ -552,7 +499,7 @@ public class TestPhonyArrayListAdd {
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed Yes
@@ -589,13 +536,13 @@ public class TestPhonyArrayListAdd {
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
 	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
-	* @type 
+	* @type  Functional
 	* @input 
 	* @oracle Must throw NullPointerException
 	* @passed No
 	* @correction 
 	* <pre>
-	* 	Branch Morte d�tect�e
+	* 	Dead Branch Detected
 	* 	l.451
 	* 	- else if (numMoved > size) {
 	* 	+ else if (numMoved >= size) {
