@@ -333,7 +333,7 @@ public class TestPhonyArrayListAdd {
 	@Test
 	public void testAddAllGrowOverCapacity() {
 
-		// Init
+//		// Init
 //		String toto = new String("toto");
 //		String titi = new String("titi");
 //		String tutu = new String("tutu");
@@ -343,15 +343,17 @@ public class TestPhonyArrayListAdd {
 //		pal.add(tutu);
 //				
 //		// tests
-//		@SuppressWarnings("rawtypes")
-//		Collection c = new PhonyArrayList<String>(Integer.MAX_VALUE - 3);
+//		Collection<Integer> c = new PhonyArrayList<Integer>(715833340);
+//		for(int i=0 ; i<715833340 ; i++){
+//				c.add(i);
+//		}
 //		
 //		boolean bAddAll = pal.addAll(c);
 		
 		/**
 		 * @TODO 
 		 * Augmenter la VM de Eclipse ne fait rien, ou bien je le fais mal.
-		 * Du coup une erreur : Java heap space, est soulevée
+		 * Du coup une erreur : Java heap space, est soulevï¿½e
 		 * */
 		
 	}
@@ -593,7 +595,7 @@ public class TestPhonyArrayListAdd {
 	* @passed No
 	* @correction 
 	* <pre>
-	* 	Branch Morte détectée
+	* 	Branch Morte dï¿½tectï¿½e
 	* 	l.451
 	* 	- else if (numMoved > size) {
 	* 	+ else if (numMoved >= size) {

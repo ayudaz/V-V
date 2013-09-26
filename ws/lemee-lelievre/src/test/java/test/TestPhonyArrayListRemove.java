@@ -508,7 +508,7 @@ public class TestPhonyArrayListRemove {
 	}
 	
 	/**
-	 * Tests remove(Collection<?>) method with a collection of String where 
+	 * Tests removeAll(Collection<?>) method with a collection of String where 
 	 * on a list of three Integer.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
 	 * @type Functional
@@ -531,10 +531,217 @@ public class TestPhonyArrayListRemove {
 		palInt.removeAll(stringColl);
 	}
 	
-	/*
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects who 
+	 * are not in the one element list.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
 	@Test
-	public final void testRetainAllCollectionOfQ() {
-		fail("Not yet implemented"); // TODO
+	public final void testRetainAllCollectionOfObjectNotInOneElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object gli = "GLI";
+		Object trois = 3;
+		objList.add(gli);
+		objList.add(trois);
+		assertFalse(palOneElement.contains(gli));
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		assertTrue(palOneElement.retainAll(objList));
+		assertTrue(palOneElement.size() == 0);
+		assertFalse(palOneElement.contains(gli));
+		assertFalse(palOneElement.contains(trois));
+		assertFalse(palOneElement.contains(objToto));
 	}
-*/
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects who
+	 * are not in the two element list.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfObjectNotInTwoElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object gli = "GLI";
+		Object trois = 3;
+		objList.add(gli);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(gli));
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.retainAll(objList));
+		assertTrue(palTwoElement.size() == 0);
+		assertFalse(palTwoElement.contains(gli));
+		assertFalse(palTwoElement.contains(trois));
+		assertFalse(palTwoElement.contains(objToto));
+		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects where 
+	 * one element is in the one element list.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfObjectInOneElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(trois);
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.size() == 1);
+		assertTrue(palOneElement.contains(objToto));
+		assertFalse(palOneElement.retainAll(objList));
+		assertTrue(palOneElement.size() == 1);
+		assertFalse(palOneElement.contains(trois));
+		assertTrue(palOneElement.contains(objToto));
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects where 
+	 * one element is in the two element list.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfObjectInTwoElementList() {
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 2);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.retainAll(objList));
+		assertTrue(palTwoElement.size() == 1);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.contains(objToto));
+		assertFalse(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects where 
+	 * two elements is in a three element list.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfObjectInThreeElementList() {
+		palTwoElement.add("Titi");
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(objTata);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 3);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertTrue(palTwoElement.retainAll(objList));
+		assertTrue(palTwoElement.size() == 2);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertFalse(palTwoElement.contains("Titi"));
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of objects where 
+	 * two elements is in a three element list who have two elements identical
+	 * who must be kept.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfObjectInThreeElementList2() {
+		palTwoElement.add(objToto);
+		Collection<Object> objList = new ArrayList<Object>();
+		Object trois = 3;
+		objList.add(objToto);
+		objList.add(objTata);
+		objList.add(trois);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.size() == 3);
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+		assertFalse(palTwoElement.retainAll(objList));
+		assertTrue(palTwoElement.size() == 3);
+		assertFalse(palTwoElement.contains(trois));
+		assertTrue(palTwoElement.contains(objToto));
+		assertTrue(palTwoElement.contains(objTata));
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of String where 
+	 * on a list of three Integer.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfStringInThreeElementIntegerList() {
+		PhonyArrayList<Integer> palInt = new PhonyArrayList<Integer>(3);
+		palInt.add(1);
+		palInt.add(2);
+		palInt.add(3);
+		Collection<String> stringColl = new TreeSet<String>();
+		stringColl.add("Toto");
+		stringColl.add("Tata");
+		
+		assertTrue(palInt.size() == 3);
+		thrown.expect(ClassCastException.class);
+		palInt.retainAll(stringColl);
+	}
+	
+	/**
+	 * Tests retainAll(Collection<?>) method with a collection of String where 
+	 * on a list of three Integer.
+	 * @see lemee-lelievre.PhonyArrayList#retainAll(Collection<?>)
+	 * @type
+	 * @input
+	 * @oracle
+	 * @passed Yes
+	 */
+	@Test
+	public final void testRetainAllCollectionOfStringInThreeElementIntegerList2() {
+		PhonyArrayList<Object> palInt = new PhonyArrayList<Object>(3);
+		palInt.add("Tata");
+		palInt.add(2);
+		palInt.add(3);
+		
+		Collection<String> stringColl = new TreeSet<String>();
+		stringColl.add("Tata");
+		
+		assertTrue(palInt.size() == 3);
+		thrown.expect(ClassCastException.class);
+		palInt.retainAll(stringColl);
+	}
+
 }
