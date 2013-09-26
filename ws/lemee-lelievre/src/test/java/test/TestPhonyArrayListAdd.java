@@ -220,7 +220,7 @@ public class TestPhonyArrayListAdd {
 	* Tests the "AddAll" method which certify that size after adding is equals
 	* with size before plus size of adding collection
 	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
 	* @type 
 	* @input 
 	* @oracle Must return "true"
@@ -260,7 +260,7 @@ public class TestPhonyArrayListAdd {
 	* Tests the "AddAll" method which certify that adding of null 
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
 	* @type 
 	* @input 
 	* @oracle Must throw NullPointerException
@@ -292,7 +292,7 @@ public class TestPhonyArrayListAdd {
 	* Tests the "AddAll" method which certify that adding of empty Collection
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
 	* @type 
 	* @input 
 	* @oracle Must throw NullPointerException
@@ -316,7 +316,7 @@ public class TestPhonyArrayListAdd {
 
 		boolean bAddAll = pal.addAll(c);
 		
-		assertFalse(bAddAll); //Integer.MAX_VALUE
+		assertFalse(bAddAll); 
 		
 	}
 	
@@ -324,7 +324,7 @@ public class TestPhonyArrayListAdd {
 	* Tests the "AddAll" method which certify that Exception will be throw with capacity of Integer.MAX_VALUE
 	* Collection throw NullPointerException
 	* specified collection's Iterator.
-	* @see lemee-lelievre.PhonyArrayList#addAll()
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
 	* @type 
 	* @input 
 	* @oracle Must throw NullPointerException
@@ -354,6 +354,273 @@ public class TestPhonyArrayListAdd {
 		 * Du coup une erreur : Java heap space, est soulevée
 		 * */
 		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that size after adding is equals
+	* with size before plus size of adding collection
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionCompareSizeBeforeAndAfter() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+		
+		int sizeBefore 	= pal.size();
+		
+		// tests
+		Collection<String> c = new PhonyArrayList<String>(8);
+		c.add(toto);
+		c.add(titi);
+		c.add(tutu);
+		
+		boolean bAddAll = pal.addAll(1, c);
+		
+		int sizeAfter 	= pal.size();
+		
+		// assertions
+		assert(bAddAll);
+		assertEquals(sizeAfter, sizeBefore + c.size());
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that adding of empty Collection
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int,Collection)
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionEmptyCollection() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+				
+		// tests
+		@SuppressWarnings("rawtypes")
+		Collection c = new ArrayList();
+
+		boolean bAddAll = pal.addAll(1,c);
+		
+		assertFalse(bAddAll);
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which certify that adding of null 
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionNullException() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+				
+		// tests
+		@SuppressWarnings("rawtypes")
+		Collection c = null;
+		
+		thrown.expect(NullPointerException.class);
+		
+		pal.addAll(1, c);
+		
+	}
+	
+	/**
+	* Tests the "AddAll" method which test the throw of IndexOutOfBoundsException with wrong index
+	* with size before plus size of adding collection
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(Collection)
+	* @type 
+	* @input 
+	* @oracle Must return "true"
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionOutOfBoundsException() {
+
+		// Init
+//		String toto = new String("toto");
+//		String titi = new String("titi");
+//		String tutu = new String("tutu");
+//		
+//		pal.add(toto);
+//		pal.add(titi);
+//		pal.add(tutu);
+//		
+//		int sizeBefore 	= pal.size();
+//		
+//		// tests
+//		Collection<String> c = new PhonyArrayList<String>(8);
+//		c.add(toto);
+//		c.add(titi);
+//		c.add(tutu);
+//		
+//		boolean bAddAll = pal.addAll(pal.size(), c);
+//		
+//		int sizeAfter 	= pal.size();
+//				
+//		// assertions
+//		assert(bAddAll);
+//		assertEquals(sizeAfter, sizeBefore + c.size());
+//		
+//		// tests
+//		thrown.expect(IndexOutOfBoundsException.class);
+//		thrown.expectMessage("Index: " + pal.size() + 1 + ", Size: " + pal.size());
+//		
+//		pal.addAll(pal.size() + 1, c);
+		
+	}
+	
+	/**
+	* Tests the "AddAll" append with index equals to source Collection size
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionIndexEqualsSize() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+			
+		int sizeBefore = pal.size();
+		
+		// tests
+		@SuppressWarnings("rawtypes")
+		ArrayList<String> c = new ArrayList<String>();
+
+		c.add(toto);
+		c.add(titi);
+		c.add(tutu);
+		
+		boolean bAddAll = pal.addAll(pal.size(),c);
+		
+		assert(bAddAll);
+		assertEquals(pal.get(sizeBefore), c.get(0));
+		
+	}
+	
+	/**
+	* Tests the "AddAll" append with Out Of Bounds Index and Source Collection empty
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed Yes
+	*/
+	@Test
+	public void testAddAllAtPositionOutOfBoundsIndex() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+					
+		// tests
+		ArrayList<String> c = new ArrayList<String>();
+
+		c.add(toto);
+		c.add(titi);
+		c.add(tutu);
+		
+		pal.add(toto);
+		pal.add(titi);
+		pal.add(tutu);
+		
+		int index = pal.size() + 1;
+		
+		thrown.expect(IndexOutOfBoundsException.class);
+		
+		pal.addAll(index,c);
+				
+	}
+	
+	/**
+	* Tests the "AddAll" append with empty source collection
+	* Collection throw NullPointerException
+	* specified collection's Iterator.
+	* @see lemee-lelievre.PhonyArrayList#addAll(int, Collection)
+	* @type 
+	* @input 
+	* @oracle Must throw NullPointerException
+	* @passed No
+	* @correction 
+	* <pre>
+	* 	Branch Morte détectée
+	* 	l.451
+	* 	- else if (numMoved > size) {
+	* 	+ else if (numMoved >= size) {
+	* </pre>
+	*/
+	@Test
+	public void testAddAllAtPositionEmptySource() {
+
+		// Init
+		String toto = new String("toto");
+		String titi = new String("titi");
+		String tutu = new String("tutu");
+					
+		// tests
+		ArrayList<String> c = new ArrayList<String>();
+
+		c.add(toto);
+		c.add(titi);
+		c.add(tutu);
+		
+		int index = 0;
+				
+		boolean b = pal.addAll(index,c);
+		
+		assert(b);
+		assertEquals(pal.size(), c.size());
+				
 	}
 	
 }
