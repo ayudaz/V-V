@@ -49,11 +49,7 @@ public class TestPhonyArrayListLastIndexOf {
 	* @type 
 	* @input 
 	* @oracle Must return "true"
-	* @passed No
-	* @correction
-	* <pre>
-	* 	
-	* </pre>
+	* @passed Yes
 	*/
 	@Test
 	public void testLastIndexOfOneOcc() {

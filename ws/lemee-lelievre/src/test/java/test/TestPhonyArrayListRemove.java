@@ -49,9 +49,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(0) method when the list is empty.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
+	 * @type Functional 
 	 * @input 0
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -65,9 +65,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(-5) method when the list is empty.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
+	 * @type Functional
 	 * @input -5
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -80,9 +80,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(5) method when the list is empty.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
+	 * @type Functional
 	 * @input 5
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -96,9 +96,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(int) method on the element of a list of one element.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 0
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -114,9 +114,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(int) method on the first element of a list of two element.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 0
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -131,9 +131,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(int) method on the second element of a list of two element.
 	 * @see lemee-lelievre.PhonyArrayList#add(int, E)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -149,9 +149,9 @@ public class TestPhonyArrayListRemove {
 	/**
 	 * Tests remove(object) method on an empty List
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -167,9 +167,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method on an one element list with an object who
 	 * are not in the list
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -187,9 +187,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method on an one element list with an object who
 	 * are in the list
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -205,9 +205,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method on a two elements list with an object who
 	 * are in the first position of the list.
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -223,9 +223,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method on a two elements list with an object who
 	 * are in the second position of the list.
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
+	 * @type Functional
 	 * @input
-	 * @oracle
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -241,9 +241,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method with a null object on a list who don't 
 	 * contain a null object.
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 
+	 * @oracle must return true
 	 * @passed No
 	 * <pre>
 	 * l.362
@@ -266,9 +266,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method with a null object on a list who contain a
 	 * null object.
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input 
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -289,9 +289,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(object) method with a null object on a list who contain 
 	 * some null objects.
 	 * @see lemee-lelievre.PhonyArrayList#remove(object)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input null, "objTata", null
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -319,9 +319,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of objects who are
 	 * not in the one element list.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input "GLI", 3
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -346,9 +346,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of objects who are
 	 * not in the two element list.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input "GLI", 3
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -375,9 +375,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of objects where 
 	 * one element is in the one element list.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional Functional
+	 * @input "objToto", 3
+	 * @oracle must return true
 	 * @passed No
 	 * <pre>
 	 * l.563
@@ -404,9 +404,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of objects where 
 	 * one element is in the two element list.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input "objToto", 3
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -430,9 +430,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of objects where 
 	 * two elements is in a three element list.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input "Titi"
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -459,9 +459,9 @@ public class TestPhonyArrayListRemove {
 	 * two elements is in a three element list who have two elements identical
 	 * who must be deleted.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input objToto, objTata
+	 * @oracle must return true
 	 * @passed Yes
 	 */
 	@Test
@@ -487,9 +487,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of String where 
 	 * on a list of three Integer.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input "Toto", "Tata"
+	 * @oracle must throw ClassCastException
 	 * @passed Yes
 	 */
 	@Test
@@ -511,9 +511,9 @@ public class TestPhonyArrayListRemove {
 	 * Tests remove(Collection<?>) method with a collection of String where 
 	 * on a list of three Integer.
 	 * @see lemee-lelievre.PhonyArrayList#removeAll(Collection<?>)
-	 * @type
-	 * @input
-	 * @oracle
+	 * @type Functional
+	 * @input"tata", 2, 3
+	 * @oracle must throw exception ClassCastException
 	 * @passed Yes
 	 */
 	@Test

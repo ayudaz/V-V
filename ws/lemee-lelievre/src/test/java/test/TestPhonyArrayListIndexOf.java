@@ -70,8 +70,8 @@ public class TestPhonyArrayListIndexOf {
 	* Tests the "{@link PhonyArrayList#indexOf(Object)}" method - test membership and not membership to an 
 	* Object not instantiated that is present only once
 	* @see lemee-lelievre.PhonyArrayList#indexOf()
-	* @type 
-	* @input 
+	* @type Functional
+	* @input toto, null, toto, null
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
@@ -95,8 +95,8 @@ public class TestPhonyArrayListIndexOf {
 	* Tests the "{@link PhonyArrayList#indexOf(Object)}" method - test membership and not memberships to an 
 	* object that is present several times
 	* @see lemee-lelievre.PhonyArrayList#indexOf()
-	* @type 
-	* @input 
+	* @type  Functional
+	* @input toto, titi, toto
 	* @oracle Must return "true"
 	* @passed Yes
 	*/
