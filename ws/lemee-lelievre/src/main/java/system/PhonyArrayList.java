@@ -448,7 +448,7 @@ implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 		if (numMoved > 0)
 			System.arraycopy(elementData, index, elementData, index + numNew,
 					numMoved);
-		else if (numMoved > size) {
+		else if (numMoved >= size) {
 			System.arraycopy(elementData, index, elementData, index + numNew,
 					numMoved);
 		}
