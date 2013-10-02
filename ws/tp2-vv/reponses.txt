@@ -1,0 +1,13 @@
+2.2
+1) Rien
+
+2) 	Etape 1
+		Tester la classe Pawn avec le stub de Board
+	Etape 2
+		Tester la classe Board avec Pawn
+	Etape 3
+		Tester la classe Pawn avec la vraie classe Board
+	Etape 4
+		Tester la classe Game avec Board
+		
+		
