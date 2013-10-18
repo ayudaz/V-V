@@ -110,6 +110,8 @@ public class Pawn {
                 y = newy;
             }
             else {
+            	x = newx;
+                y = newy;
                 message = this.attack(content);
             }
         } else {

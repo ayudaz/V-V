@@ -10,4 +10,13 @@
 	Etape 4
 		Tester la classe Game avec Board
 		
+////////// THOMAS ////////		
+ - Test sur Pawn
+
+Dans le sujet il est indiqué que :
+* A pawn has 5 hitpoints
+
+Seulement à l'initialisation on dispose de 2 hitpoints uniquement. Ce n'est pas testable avec JUnit, mais il semble que ce soit un "bug"
+
+Qu'en penses tu ?
 		
