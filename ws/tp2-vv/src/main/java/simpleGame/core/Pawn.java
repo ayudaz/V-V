@@ -55,7 +55,7 @@ public class Pawn {
 
 
     /**
-     * Creates a Pawn with 2 hitpoints and 0 gold.
+     * Creates a Pawn with 5 hitpoints and 0 gold.
      * @param n The letter that represents the pawn.
      * @param x Position on the x axis
      * @param y Position on the y axis
@@ -66,7 +66,7 @@ public class Pawn {
         this.x = x;
         this.y = y;
         this.board = board;
-        this.hitpoints = 2;
+        this.hitpoints = 5;
         this.gold = 0;
     }
 
@@ -100,8 +100,8 @@ public class Pawn {
             break;
         }
 
-        if 	(newy <= board.getYSize()
-                && newx <= board.getXSize()
+        if(newy < board.getYSize()
+                && newx < board.getXSize()
                 && newy >= 0
                 && newx >= 0) {
             Pawn content = board.getSquareContent(newx,newy);
@@ -162,7 +162,7 @@ public class Pawn {
      * @return True if the pawn is dead, false otherwise.
      */
     public boolean isDead() {
-    	return this.hitpoints == 0;
+    	return this.hitpoints <= 0;
     }
 
 

@@ -19,4 +19,6 @@ Dans le sujet il est indiquÃ© que :
 Seulement Ã  l'initialisation on dispose de 2 hitpoints uniquement. Ce n'est pas testable avec JUnit, mais il semble que ce soit un "bug"
 
 Qu'en penses tu ?
-		
+
+Pour moi c'est bien un bug, c'est bien mis dans les règles qu'un pawn à 5 point de vie. Du coup c'est quand même testable, si on prend un 
+pawn qu'on lui enlève deux PV il doit pas être mort d'après les règles.
