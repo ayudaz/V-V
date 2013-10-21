@@ -1,40 +1,45 @@
 package simpleGame.core;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import simpleGame.exception.OutOfBoardException;
-import static org.mockito.Mockito.*;
 
 /**
- * Test class for the Pawn class with a stub of the Board class.
+ * Test class for the Pawn class.
  * 
  * @author Lelievre Thomas & Leloup Florian
  *
  */
-@RunWith(MockitoJUnitRunner.class)
-public class PawnStubTest {
+public class PawnTest {
 
-	@Mock	// This annotation declares a mock attribute
 	private Board board;
+	private Board boardPetit;
 	private Pawn pawn;
+	private Pawn pawn2;
 
 	/**
 	 * Create a pawn for all test.
 	 */
 	@Before
 	public void setUp() {
+		ArrayList<Pawn> l = new ArrayList<Pawn>();
+		board = new Board(l, 10, 10, 0, 1);
+		boardPetit = new Board(l, 1, 1, 0, 0);
 		pawn = new Pawn('L', 0, 0, board);
-
+		pawn2 = new Pawn('L', 0, 0, boardPetit);
+		board.addPawn(pawn);
+		boardPetit.addPawn(pawn2);
+		
 	}
 	
 	
 	/**
-	 * Test construtor.
+	 * Test constructor.
 	 * @type Functional
 	 * @input No
 	 * @oracle Must return "true"
@@ -56,23 +61,10 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Up
 	 * @oracle Must return "true"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.105
-	 * -  && newy > 0
-	 * +  && newy >= 0
-	 *
-	 * l.106
-	 * -  && newx > 0
-	 * +  && newx >= 0
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test
 	public final void testMoveUp() {
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(null);
 		try {
 			pawn.move(Direction.Up);
 		} catch (OutOfBoardException e) {
@@ -92,9 +84,6 @@ public class PawnStubTest {
 	 */
 	@Test
 	public final void testMoveRight() {
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(null);
 		try {
 			pawn.move(Direction.Right);
 		} catch (OutOfBoardException e) {
@@ -114,9 +103,6 @@ public class PawnStubTest {
 	 */
 	@Test
 	public final void testMoveLeft() {
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(null);
 		try {
 			pawn.move(Direction.Right);
 		} catch (OutOfBoardException e) {
@@ -145,9 +131,6 @@ public class PawnStubTest {
 	 */
 	@Test(expected = OutOfBoardException.class)
 	public final void testMoveDownWithException() throws OutOfBoardException {
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, -1)).thenReturn(null);
 		pawn.move(Direction.Down);
 	}
 	
@@ -163,9 +146,6 @@ public class PawnStubTest {
 	 */
 	@Test(expected = OutOfBoardException.class)
 	public final void testMoveLeftWithException() throws OutOfBoardException {
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(-1, 0)).thenReturn(null);
 		pawn.move(Direction.Left);
 	}
 	
@@ -177,20 +157,11 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Up
 	 * @oracle Must return "OutOfBoardException"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.103
-	 * - if(newy <= board.getYSize()
-	 * + if(newy < board.getYSize()
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test(expected = OutOfBoardException.class)
 	public final void testMoveUpWithException() throws OutOfBoardException {
-		when(board.getXSize()).thenReturn(1);
-		when(board.getYSize()).thenReturn(1);
-		when(board.getSquareContent(0, 1)).thenReturn(null);
-		pawn.move(Direction.Up);
+		pawn2.move(Direction.Up);
 	}
 	
 	/**
@@ -201,20 +172,11 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Right
 	 * @oracle Must return "OutOfBoardException"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.104
-	 * - && newx <= board.getXSize()
-	 * + && newx < board.getXSize()
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test(expected = OutOfBoardException.class)
 	public final void testMoveRightWithException() throws OutOfBoardException {
-		when(board.getXSize()).thenReturn(1);
-		when(board.getYSize()).thenReturn(1);
-		when(board.getSquareContent(1, 0)).thenReturn(null);
-		pawn.move(Direction.Right);
+		pawn2.move(Direction.Right);
 	}
 	
 	/**
@@ -223,23 +185,11 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Up
 	 * @oracle Must return "true"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.113
-	 * +  x = newx;
-	 *
-	 * l.114
-	 * + y = newy;
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test
 	public final void testMoveAttack() {
 		Pawn pawnDead = new Pawn('C', 0, 1, board);
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(pawnDead);
-		when(board.isBonusSquare(0, 1)).thenReturn(false);
 		try {
 			pawn.move(Direction.Up);
 		} catch (OutOfBoardException e) {
@@ -257,25 +207,11 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Up
 	 * @oracle Must return "true"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.58
-	 * - * Creates a Pawn with 2 hitpoints and 0 gold.
-	 * + * Creates a Pawn with 5 hitpoints and 0 gold.
-	 * 
-	 * l.69
-	 * - this.hitpoints = 2;
-	 * + this.hitpoints = 5;
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test
 	public final void testMoveAttackBonus() {
 		Pawn pawnDead = new Pawn('C', 0, 1, board);
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(pawnDead);
-		when(board.isBonusSquare(0, 1)).thenReturn(true);
 		try {
 			pawn.move(Direction.Up);
 		} catch (OutOfBoardException e) {
@@ -294,21 +230,12 @@ public class PawnStubTest {
 	 * @type Functional
 	 * @input Direction.Up
 	 * @oracle Must return "true"
-	 * @passed No
-	 * @correction
-	 * <pre>
-	 * l.165
-	 * - return this.hitpoints == 0;
-	 * + return this.hitpoints <= 0;
-	 * </pre>
+	 * @passed Yes
 	 */
 	@Test
 	public final void testPawnDead() {
 		Pawn pawnDead = new Pawn('C', 0, 1, board);
-		when(board.getXSize()).thenReturn(10);
-		when(board.getYSize()).thenReturn(10);
-		when(board.getSquareContent(0, 1)).thenReturn(pawnDead);
-		when(board.isBonusSquare(0, 1)).thenReturn(true);
+		board.addPawn(pawnDead);
 		try {
 			pawn.move(Direction.Up);
 		} catch (OutOfBoardException e) {
