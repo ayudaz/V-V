@@ -164,8 +164,11 @@ public class Board {
      */
     public void addPawn(Pawn pawn) {
         if (getSquareContent(pawn.getX(),
-                             pawn.getY()) == null)
-            this.pawns.add(pawn);
+                             pawn.getY()) == null){
+        	this.pawns.add(pawn);
+        	if(this.currentPawn == null)
+        		this.currentPawn = pawn;
+        }
     }
 
     /**

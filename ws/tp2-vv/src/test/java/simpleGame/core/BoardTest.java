@@ -28,20 +28,20 @@ public class BoardTest {
 	 */
 	@Before
 	public void setUp() {
-		listPawn = new ArrayList<Pawn>();
-		p1 = new Pawn('A', 0, 0, board);
-		listPawn.add(p1);
-		p2 = new Pawn('B', 2, 3, board);
-		listPawn.add(p2);
-		p3 = new Pawn('C', 1, 0, board);
-		listPawn.add(p3);
-		p4 = new Pawn('D', 5, 8, board);
-		listPawn.add(p4);
 		xSize = 10;
 		ySize = 10;
 		xBonus = 5;
 		yBonus = 5;
+		listPawn = new ArrayList<Pawn>();
 		board = new Board(listPawn, xSize, ySize, xBonus, yBonus);
+		p1 = new Pawn('A', 0, 0, board);
+		board.addPawn(p1);
+		p2 = new Pawn('B', 2, 3, board);
+		board.addPawn(p2);
+		p3 = new Pawn('C', 1, 0, board);
+		board.addPawn(p3);
+		p4 = new Pawn('D', 5, 8, board);
+		board.addPawn(p4);
 	}
 
 	/**

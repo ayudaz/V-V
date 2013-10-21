@@ -28,13 +28,13 @@ public class PawnTest {
 	@Before
 	public void setUp() {
 		ArrayList<Pawn> l = new ArrayList<Pawn>();
+		ArrayList<Pawn> l2 = new ArrayList<Pawn>();
 		board = new Board(l, 10, 10, 0, 1);
-		boardPetit = new Board(l, 1, 1, 0, 0);
+		boardPetit = new Board(l2, 1, 1, 0, 0);
 		pawn = new Pawn('L', 0, 0, board);
 		pawn2 = new Pawn('L', 0, 0, boardPetit);
 		board.addPawn(pawn);
-		boardPetit.addPawn(pawn2);
-		
+		board.addPawn(pawn2);
 	}
 	
 	
