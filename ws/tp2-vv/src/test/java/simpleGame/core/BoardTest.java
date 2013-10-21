@@ -356,4 +356,15 @@ public class BoardTest {
 		
 		assertEquals(1, board.maxGold());
 	}
+	
+	/**
+	 * Test the toString method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	public void testToString(){
+		assertNotNull(board.toString());
+	}
 }
