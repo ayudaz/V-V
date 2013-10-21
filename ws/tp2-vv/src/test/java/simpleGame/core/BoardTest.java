@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import simpleGame.exception.OutOfBoardException;
+
 /**
  * Test class of the Board class.
  * 
@@ -266,5 +268,103 @@ public class BoardTest {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Test the SquareContentSprite method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	@Test
+    public void testSquareContentSprite() {
+		//Test with pawn equals to the pawn of the board
+		Pawn currentPawn = board.getCurrentPawn();
+		char returnValue = board.squareContentSprite(currentPawn.getX(),currentPawn.getY());
+		assertEquals('c', returnValue);
+		
+		board.removePawn(currentPawn);
+		returnValue = board.squareContentSprite(currentPawn.getX(),currentPawn.getY());
+		assertEquals('.', returnValue);
+		
+		//Test with a random pawn of the board
+		returnValue = board.squareContentSprite(p2.getX(), p2.getY());
+		char pawnName = p2.getLetter();
+		assertEquals(returnValue, pawnName);
+		
+		//Test the bonus square
+		assertEquals('#', board.squareContentSprite(xBonus, yBonus));
+		
+		//Test empty square
+		assertEquals('.',board.squareContentSprite(4, 4));
+    }
+	
+	/**
+	 * Test the numberOfPawns method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	@Test
+	public void testNumberOfPawns(){
+		assertEquals(4, board.numberOfPawns());
+		board.removePawn(p1);
+		assertEquals(3, board.numberOfPawns());
+		board.removePawn(p2);
+		assertEquals(2, board.numberOfPawns());
+		board.removePawn(p3);
+		assertEquals(1, board.numberOfPawns());		
+		board.removePawn(p4);
+		assertEquals(0, board.numberOfPawns());
+		board.addPawn(p1);
+		assertEquals(1,board.numberOfPawns());
+	}
+
+	/**
+	 * Test maxGold method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	@Test
+	public void testMaxGold(){
+		Pawn p = new Pawn('X', 2, 0, board);
+		board.addPawn(p);
+
+		Pawn p2 = new Pawn('Y', 3, 0, board);
+		board.addPawn(p2);
+		
+		assertEquals(0, board.maxGold());
+		
+		try {
+			p.move(Direction.Right);
+			p.move(Direction.Left);
+			p.move(Direction.Right);
+			p.move(Direction.Left);
+			p.move(Direction.Right);
+			p.move(Direction.Left);
+			p.move(Direction.Right);
+			p.move(Direction.Left);
+			p.move(Direction.Right);
+			p.move(Direction.Left);
+		} catch (OutOfBoardException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(1, board.maxGold());
+	}
+	
+	/**
+	 * Test the toString method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	public void testToString(){
+		assertNotNull(board.toString());
 	}
 }
