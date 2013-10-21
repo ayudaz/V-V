@@ -108,28 +108,45 @@ public class BoardTest {
 	 */
 	@Test
 	public void testRemovePawn(){
+		// remove pawn who are on the board
 		assertEquals(4, board.getPawns().size());
 		assertTrue(board.getPawns().contains(p1));
 		board.removePawn(p1);
 		assertEquals(3, board.getPawns().size());
+		assertFalse(board.getPawns().contains(p1));
+		// remove pawn who are not on the board
+		board.removePawn(p1);
+		assertEquals(3, board.getPawns().size());
+		assertFalse(board.getPawns().contains(p1));
 	}
 	
 	/**
-	 * Test the getSquareContent method.
+	 * Test the getSquareContent method on a pawn position.
 	 * @type Functional
 	 * @input No
 	 * @oracle Must return "true"
 	 * @passed Yes
 	 **/
 	@Test
-	public void testGetSquareContent() {
-		// getSquareContent on a pawn position.
+	public void testGetSquareContentPawn() {
+		assertTrue(board.getPawns().contains(p1));
 		Pawn p = board.getSquareContent(p1.getX(), p1.getY());
 		assertNotNull(p);
-		
-		// getSquareContent on a square with no pawn
+		assertEquals(p, p1);
+	}
+	
+	/**
+	 * Test the getSquareContent method on a square with no pawn
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 **/
+	@Test
+	public void testGetSquareContentNoPawn() {
 		board.removePawn(p1);
-		p = board.getSquareContent(p1.getX(), p1.getX());
+		assertFalse(board.getPawns().contains(p1));
+		Pawn p = board.getSquareContent(p1.getX(), p1.getX());
 		assertNull(p);
 	}
 	
@@ -143,9 +160,13 @@ public class BoardTest {
 	 */
 	@Test
 	public void testAddPawnNonEmptySquare(){
-		assertEquals(board.numberOfPawns(), 4);
-		board.addPawn(new Pawn('T', p1.getX(), p1.getY(), board));
-		assertEquals(board.numberOfPawns(), 4);
+		assertEquals(board.getPawns().size(), 4);
+		assertTrue(board.getPawns().contains(p1));
+		Pawn p = new Pawn('T', p1.getX(), p1.getY(), board);
+		board.addPawn(p);
+		assertEquals(board.getPawns().size(), 4);
+		assertTrue(board.getPawns().contains(p1));
+		assertFalse(board.getPawns().contains(p));
 	}
 	
 	/**
@@ -183,34 +204,67 @@ public class BoardTest {
 	 */
 	@Test
 	public void testGetNextPawnWithOnePawn(){
-		board = new Board(1, 10, 10);
-		assertEquals(board.numberOfPawns(), 1);
-		for (int x = 0; x < board.getXSize(); x++) {
-			for (int y = 0; y < board.getYSize(); y++) {
-				if(board.getSquareContent(x, y) != null){
-					p1 = board.getSquareContent(x, y);
-				}
-			}
-		}
-		assertNotNull(p1);
-		// some calls to getNextPawn method to prove
-		// that it return p1 every time.
+		ArrayList<Pawn> l = new ArrayList<Pawn>(1);
+		l.add(p1);
+		board = new Board(l, 10, 10, 0, 0);
+		assertEquals(board.getPawns().size(), 1);
+		assertTrue(board.getPawns().contains(p1));
+		// the current pawn on starting must be p1
+		assertEquals(board.getCurrentPawn(), p1);
+		// the method getNewPawn must return p1 as next pawn
 		assertEquals(board.getNextPawn(), p1);
-		assertEquals(board.getNextPawn(), p1);
-		assertEquals(board.getNextPawn(), p1);
-		assertEquals(board.getNextPawn(), p1);
+		// the currentPawn attribute must stay p1
+		assertEquals(board.getCurrentPawn(), p1);
 	}
 	
 	/**
 	 * Tests the getNextPawn method with a board who contain 4 pawn.
-	 * this method must return alternatively each pawn in the same order.
+	 * this method must return alternatively each pawn in the same
+	 * order than in the listPawn who create the board.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
 	 */
 	@Test
 	public void testGetNextPawnWithSomePawn(){
-		Pawn first, second, third, fourth;
 		assertEquals(board.numberOfPawns(), 4);
-		first = board.getNextPawn();
-		assertNotNull(first);
+		// the current pawn must be the first element of listPawn
+		assertEquals(board.getCurrentPawn(), listPawn.get(0));
+		// the getNextPawn method must return the first element of listPawn
+		assertEquals(board.getNextPawn(), listPawn.get(0));
+		// the current pawn must be the second element of listPawn
+		assertEquals(board.getCurrentPawn(), listPawn.get(1));
+		// the getNextPawn method must return the second element of listPawn
+		assertEquals(board.getNextPawn(), listPawn.get(1));
+		// the current pawn must be the third element of listPawn
+		assertEquals(board.getCurrentPawn(), listPawn.get(2));
+		// the getNextPawn method must return the third element of listPawn
+		assertEquals(board.getNextPawn(), listPawn.get(2));
+		// the current pawn must be the fourth element of listPawn
+		assertEquals(board.getCurrentPawn(), listPawn.get(3));
+		// the getNextPawn method must return the fourth element of listPawn
+		assertEquals(board.getNextPawn(), listPawn.get(3));
+		// the current pawn must be the first element of listPawn
+		assertEquals(board.getCurrentPawn(), listPawn.get(0));
+		// the getNextPawn method must return the first element of listPawn
+		assertEquals(board.getNextPawn(), listPawn.get(0));
 	}
-
+	
+	/**
+	 * Test the isBonusSquare method.
+	 */
+	@Test
+	public void testIsBonusSquare(){
+		for(int x=0; x<board.getXSize(); x++){
+			for(int y=0; y<board.getYSize(); y++){
+				if(x == xBonus && y == yBonus){
+					assertTrue(board.isBonusSquare(x, y));
+				}
+				else{
+					assertFalse(board.isBonusSquare(x, y));
+				}
+			}
+		}
+	}
 }

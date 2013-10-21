@@ -127,6 +127,12 @@ public class Board {
         this.xBonusSquare = xBonusPos;
         this.yBonusSquare = yBonusPos;
         this.pawns = pawnList;
+        if(this.pawns.size() > 0){
+        	this.currentPawn = this.pawns.get(0);
+        }
+        else{
+        	// exception
+        }
     }
 
     /**
