@@ -24,15 +24,11 @@ public class BoardTest {
 	 */
 	@Before
 	public void setUp() {
-		board = new Board(0, 10, 10);
-		p1 = new Pawn('A', 0, 0, board);
-		p2 = new Pawn('B', 5, 5, board);
-		p3 = new Pawn('C', 3, 6, board);
-		p4 = new Pawn('D', 1, 8, board);
-		board.addPawn(p1);
-		board.addPawn(p2);
-		board.addPawn(p3);
-		board.addPawn(p4);
+		board = new Board(4, 10, 10);
+		p1 = board.getNextPawn();
+		p2 = board.getNextPawn();
+		p3 = board.getNextPawn();
+		p4 = board.getNextPawn();
 	}
 
 	/**
@@ -40,11 +36,23 @@ public class BoardTest {
 	 * @type Functional
 	 * @input No
 	 * @oracle Must return "true"
-	 * @passed Yes
+	 * @passed No
+	 * @correction
+	 * <pre>
+	 * l.76
+	 * - Pawn pawn = new Pawn(Character.forDigit(i, 10),
+	 * - 						random.nextInt(xSize),random.nextInt(ySize),this);
+	 * 
+	 * + Pawn pawn;
+     * + 	do{
+     * +  		pawn = new Pawn(Character.forDigit(i, 10),
+     * +                        random.nextInt(xSize),random.nextInt(ySize),this);
+     * +  	}while(this.getSquareContent(pawn.getX(), pawn.getY()) != null);
+	 * </pre>
 	 **/
 	@Test
 	public void testConstructeurBoard() {
-		int xSize = 10, ySize = 20, nbPawn = 5;
+		int xSize = 5, ySize = 5, nbPawn = 5;
 		Board b = new Board(nbPawn, xSize, ySize);
 		assertEquals(b.getXSize(), xSize);
 		assertEquals(b.getYSize(), ySize);
@@ -62,15 +70,36 @@ public class BoardTest {
 	}
 	
 	/**
-	 * Test the GetContentSquare method.
+	 * Test the removePawn method.
+	 * @type Functional
+	 * @input p1
+	 * @oracle Must return "true"
+	 * @passed Yes
+	 */
+	@Test
+	public void testRemovePawn(){
+		assertEquals(4, board.numberOfPawns());
+		board.removePawn(p1);
+		assertEquals(3, board.numberOfPawns());
+	}
+	
+	/**
+	 * Test the getSquareContent method.
 	 * @type Functional
 	 * @input No
 	 * @oracle Must return "true"
 	 * @passed Yes
 	 **/
 	@Test
-	public void testGetContentSquare() {
+	public void testGetSquareContent() {
+		// getSquareContent on a pawn position.
+		Pawn p = board.getSquareContent(p1.getX(), p1.getY());
+		assertNotNull(p);
 		
+		// getSquareContent on a square with no pawn
+		board.removePawn(p1);
+		p = board.getSquareContent(p1.getX(), p1.getX());
+		assertNull(p);
 	}
 
 }

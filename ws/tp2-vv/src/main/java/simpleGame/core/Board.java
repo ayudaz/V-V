@@ -69,9 +69,15 @@ public class Board {
         this.xBonusSquare = random.nextInt(xSize);
         this.yBonusSquare = random.nextInt(ySize);
         this.pawns = new ArrayList<Pawn>();
+        if(numberOfPawns > sizeX*sizeY){
+        	// exceptions !!!!
+        }
         for(int i = 0; i<numberOfPawns; i++) {
-            Pawn pawn = new Pawn(Character.forDigit(i, 10),
+        	Pawn pawn;
+        	do{
+        		pawn = new Pawn(Character.forDigit(i, 10),
                                  random.nextInt(xSize),random.nextInt(ySize),this);
+        	}while(this.getSquareContent(pawn.getX(), pawn.getY()) != null);
             this.addPawn(pawn);
         }
 
