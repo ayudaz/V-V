@@ -1,6 +1,7 @@
 package simpleGame.core;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -54,6 +55,34 @@ public class Board {
 
     
     /**
+	 * @return the pawns
+	 */
+	public ArrayList<Pawn> getPawns() {
+		return pawns;
+	}
+
+	/**
+	 * @return the currentPawn
+	 */
+	public Pawn getCurrentPawn() {
+		return currentPawn;
+	}
+
+	/**
+	 * @return the xBonusSquare
+	 */
+	public int getxBonusSquare() {
+		return xBonusSquare;
+	}
+
+	/**
+	 * @return the yBonusSquare
+	 */
+	public int getyBonusSquare() {
+		return yBonusSquare;
+	}
+
+	/**
      * Constructs a board, with a number of pawns and a size.
      * The pawns are spread randomly.
      * The bonus square is selected randomly.
@@ -82,6 +111,22 @@ public class Board {
         }
 
         currentPawn = pawns.get(0);
+    }
+    
+    /**
+     * Construct a Board with a list of pawn and a size.
+     * @param pawnList an ArrayList of pawns
+     * @param sizeX The number of squares on the x axis
+     * @param sizeY The number of squares on the y axis
+     * @param xBonusPos The x position of the bonus square
+     * @param yBonusPos The y position of the bonus square
+     */
+    public Board(ArrayList<Pawn> pawnList, int sizeX, int sizeY, int xBonusPos, int yBonusPos) {
+    	this.xSize = sizeX;
+        this.ySize = sizeY;
+        this.xBonusSquare = xBonusPos;
+        this.yBonusSquare = yBonusPos;
+        this.pawns = pawnList;
     }
 
     /**
