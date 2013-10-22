@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import simpleGame.exception.ImpossibleBoardException;
 import simpleGame.exception.OutOfBoardException;
 
 /**

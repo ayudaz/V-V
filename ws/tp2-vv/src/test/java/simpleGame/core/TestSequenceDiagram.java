@@ -1,7 +1,5 @@
 package simpleGame.core;
 
-import java.util.ArrayList;
-
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -25,15 +23,12 @@ public class TestSequenceDiagram {
 	private Board bo;
 	@InjectMocks
 	private Game g;
-	
-	private Game g2;
 	@Mock
 	private Pawn p1;
 	@Mock 
 	private Pawn p2;
-	private ArrayList<Pawn> l = new ArrayList<Pawn>();
 	@InjectMocks
-	private Board bo2 = new Board(l, 10, 10, 0, 0);
+	private Board bo2 = new Board(10, 10, 0, 0);
 	
 	/**
 	 * Integration test of the numberOfPawns method.

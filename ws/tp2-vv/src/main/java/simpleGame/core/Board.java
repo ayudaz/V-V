@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import simpleGame.exception.ImpossibleBoardException;
+
 /**
  * Describes the board on which Pawns can move.
  * It is of rectangular shape, and is made of squares.
@@ -89,9 +91,10 @@ public class Board {
      * @param numberOfPawns The number of pawns.
      * @param sizeX The number of squares on the x axis.
      * @param sizeY The number of squares on the y axis.
+	 * @throws ImpossibleBoardException 
      */
     public Board(int numberOfPawns, int sizeX,
-                 int sizeY) {
+                 int sizeY) throws ImpossibleBoardException {
         Random random = new Random();
         this.xSize = sizeX;
         this.ySize = sizeY;
@@ -99,7 +102,7 @@ public class Board {
         this.yBonusSquare = random.nextInt(ySize);
         this.pawns = new ArrayList<Pawn>();
         if(numberOfPawns > sizeX*sizeY){
-        	// exceptions !!!!
+        	throw new ImpossibleBoardException();
         }
         for(int i = 0; i<numberOfPawns; i++) {
         	Pawn pawn;
@@ -130,9 +133,21 @@ public class Board {
         if(this.pawns.size() > 0){
         	this.currentPawn = this.pawns.get(0);
         }
-        else{
-        	// exception
-        }
+    }
+    
+    /**
+     * Construct a Board with a size, the list of pawns is empty.
+     * @param sizeX
+     * @param sizeY
+     * @param xBonusPos
+     * @param yBonusPos
+     */
+    public Board(int sizeX, int sizeY, int xBonusPos, int yBonusPos) {
+    	this.xSize = sizeX;
+        this.ySize = sizeY;
+        this.xBonusSquare = xBonusPos;
+        this.yBonusSquare = yBonusPos;
+        this.pawns = new ArrayList<Pawn>();
     }
 
     /**

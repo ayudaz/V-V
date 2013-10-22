@@ -1,5 +1,6 @@
 package simpleGame.core;
 
+import simpleGame.exception.ImpossibleBoardException;
 import simpleGame.exception.OutOfBoardException;
 
 /**
@@ -17,7 +18,11 @@ public class Game {
      * Constructs a Game with 2 pawns on a 4x4 board.
      */
     public Game() {
-        board = new Board(2,4,4);
+        try {
+			board = new Board(2,4,4);
+		} catch (ImpossibleBoardException e) {
+			e.printStackTrace();
+		}
     }
 
     /**

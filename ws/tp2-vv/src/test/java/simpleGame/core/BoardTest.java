@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import simpleGame.exception.ImpossibleBoardException;
 import simpleGame.exception.OutOfBoardException;
 
 /**
@@ -54,7 +55,16 @@ public class BoardTest {
 	 * @passed No
 	 * @correction
 	 * <pre>
-	 * l.76
+	 * l.94
+	 * +  * @throws ImpossibleBoardException
+	 * l.97
+	 * - int sizeY) {
+	 * + int sizeY) throws ImpossibleBoardException {
+	 * l.104
+	 * + if(numberOfPawns > sizeX*sizeY){
+       + 	throw new ImpossibleBoardException();
+       + }
+	 * l.108
 	 * - Pawn pawn = new Pawn(Character.forDigit(i, 10),
 	 * - 						random.nextInt(xSize),random.nextInt(ySize),this);
 	 * 
@@ -68,20 +78,26 @@ public class BoardTest {
 	@Test
 	public void testConstructeurBoard() {
 		int xSize = 5, ySize = 10, nbPawn = 5;
-		Board b = new Board(nbPawn, xSize, ySize);
-		assertEquals(b.getXSize(), xSize);
-		assertEquals(b.getYSize(), ySize);
-		assertEquals(b.numberOfPawns(), nbPawn);
-		// There only one bonus square
-		int nbBonus = 0;
-		for(int x = 0 ; x < xSize ; x++ ){
-			for(int y = 0 ; y < ySize ; y++){
-				if(b.isBonusSquare(x, y)){
-					nbBonus++;
+		Board b;
+		try {
+			b = new Board(nbPawn, xSize, ySize);
+			assertEquals(b.getXSize(), xSize);
+			assertEquals(b.getYSize(), ySize);
+			assertEquals(b.numberOfPawns(), nbPawn);
+			// There only one bonus square
+			int nbBonus = 0;
+			for(int x = 0 ; x < xSize ; x++ ){
+				for(int y = 0 ; y < ySize ; y++){
+					if(b.isBonusSquare(x, y)){
+						nbBonus++;
+					}
 				}
 			}
+			assertEquals(1, nbBonus);
+		} catch (ImpossibleBoardException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
 		}
-		assertEquals(1, nbBonus);
 	}
 	
 	/**
@@ -255,6 +271,10 @@ public class BoardTest {
 	
 	/**
 	 * Test the isBonusSquare method.
+	 * @type Functional
+	 * @input No
+	 * @oracle Must return "true"
+	 * @passed Yes
 	 */
 	@Test
 	public void testIsBonusSquare(){
