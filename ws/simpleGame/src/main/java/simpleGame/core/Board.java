@@ -15,27 +15,27 @@ public class Board {
     /**
      * The number of squares on the x axis.
      */
-    private int xSize;
+    private final int xSize;
 
     /**
      * The number of squares on the y axis.
      */
-    private int ySize;
+    private final int ySize;
 
     /**
      * The Pawns that currently are on the board.
      */
-    private ArrayList<Pawn> pawns;
+    private final ArrayList<Pawn> pawns;
 
     /**
      * The x position of the bonus square
      */
-    private int xBonusSquare;
+    private final int xBonusSquare;
 
     /**
      * the y position of the bonus square
      */
-    private int yBonusSquare;
+    private final int yBonusSquare;
 
     /**
      * An iterator pointing towards the current pawn that must play.
@@ -61,16 +61,16 @@ public class Board {
      * @param sizeX The number of squares on the x axis.
      * @param sizeY The number of squares on the y axis.
      */
-    public Board(int numberOfPawns, int sizeX,
+    public Board(final int numberOfPawns, final int sizeX,
                  int sizeY) {
-        Random random = new Random();
+        final Random random = new Random();
         this.xSize = sizeX;
         this.ySize = sizeY;
         this.xBonusSquare = random.nextInt(xSize);
         this.yBonusSquare = random.nextInt(ySize);
         this.pawns = new ArrayList<Pawn>();
         for(int i = 0; i<numberOfPawns; i++) {
-            Pawn pawn = new Pawn(Character.forDigit(i, 10),
+            final Pawn pawn = new Pawn(Character.forDigit(i, 10),
                                  random.nextInt(xSize),random.nextInt(ySize),this);
             this.addPawn(pawn);
         }
@@ -84,9 +84,9 @@ public class Board {
      * @param y The y axis value.
      * @return The pawn found, or null if no pawn.
      */
-    public Pawn getSquareContent(int x, int y) {
+    public Pawn getSquareContent(final int x, final int y) {
         for (Pawn p : pawns) {
-            if ((p.getX() == x) &&(p.getY() == y)) {
+            if (p.getX() == x && p.getY() == y) {
                 return p;
             }
         }
