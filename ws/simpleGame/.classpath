@@ -32,6 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="pmd-5.0.5-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="/pmd/target/pmd-5.0.5-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
