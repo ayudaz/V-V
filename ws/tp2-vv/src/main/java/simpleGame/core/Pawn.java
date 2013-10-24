@@ -112,6 +112,7 @@ public class Pawn {
             else {
             	x = newx;
                 y = newy;
+                System.out.println("On attaque "+content.getLetter());
                 message = this.attack(content);
             }
         } else {
