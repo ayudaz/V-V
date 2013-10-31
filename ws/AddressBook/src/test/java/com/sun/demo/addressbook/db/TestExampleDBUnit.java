@@ -124,6 +124,87 @@ public class TestExampleDBUnit extends UITestCaseSwing {
 		Assertion.assertEquals(expectedTable, actualFilteredTable);
 	}
 	
+	/**
+	 * Test method.
+	 */
+	public void testSameTuple() throws Exception {
+		
+		// WindowTester code to add data in the database
+		IUIContext ui = getUI();
+		ui.click(new JButtonLocator("New"));
+		ui.click(new LabeledTextLocator("Last Name"));
+		ui.enterText("LECRIVAIN");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Benoit");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Alexandre");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("0225688722");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("benoit.lecrivain@hotmail.com");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Chateau d Apigne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Porte 4");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Apigne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Bretagne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("35650");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("France");
+		ui.click(new JButtonLocator("Save"));
+		
+		ui.click(new JButtonLocator("New"));
+		ui.click(new LabeledTextLocator("Last Name"));
+		ui.enterText("LECRIVAIN");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Benoit");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Alexandre");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("0225688722");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("benoit.lecrivain@hotmail.com");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Chateau d Apigne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Porte 4");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Apigne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("Bretagne");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("35650");
+		ui.keyClick(KeyEvent.VK_TAB);
+		ui.enterText("France");
+		ui.click(new JButtonLocator("Save"));
+		
+		ui.click(new JButtonLocator("Exit"));
+		
+		// Prepares the expected dataset
+		expected = new FlatXmlDataSetBuilder().build(new FileInputStream(
+				"data/dataset2addresses.xml"));
+		
+		// Fetches the content of the actual database
+		actual = connection.createDataSet();
+		
+		// The name of the table to check in the database
+		String tableName = "Address";
+		
+		// Get the table of interest from both actual and expected databases
+		ITable expectedTable = expected.getTable(tableName);
+		ITable actualTable = actual.getTable(tableName);
+		
+		// Filters the actual table, to only consider the data of interest
+		Column[] filter = expected.getTableMetaData(tableName).getColumns();
+		ITable actualFilteredTable = DefaultColumnFilter.includedColumnsTable(actualTable, 
+	            filter);
+		
+		// Assertion that both expected and (filtered) actual table are identical
+		Assertion.assertEquals(expectedTable, actualFilteredTable);
+	}
 	
 	/**
 	 * In tearDown(), we delete everything from the database,

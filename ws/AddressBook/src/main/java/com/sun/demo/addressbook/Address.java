@@ -109,6 +109,7 @@ public class Address {
         return id;
     }
     
+    
     /**
      * Getter for property address1.
      * @return Value of property address1.
