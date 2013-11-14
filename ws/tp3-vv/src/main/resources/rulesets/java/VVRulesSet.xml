@@ -22,4 +22,41 @@
             ]]>
         </example>
     </rule>
+    <rule name="ForLoopsMustNotBeNested"
+        message="Avoid using nested 'for' statements"
+         language="java"
+        class="vv.tp3.ForLoopsMustNotBeNested">
+        <description>
+            Avoid using nested 'for' statements
+        </description>
+        <priority>3</priority>
+        
+        <example>
+            <![CDATA[
+                public void doSomething() {
+	                for (x < 100){
+		                for (y < 100){
+		                }
+	                }
+                }
+            ]]>
+        </example>
+    </rule><rule name="WhileLoopsMustNotUseBooleanDirectly"
+        message="Avoid using boolean directly on 'while' statements"
+         language="java"
+        class="vv.tp3.WhileLoopsMustNotUseBooleanDirectly">
+        <description>
+            Avoid using boolean directly on 'while' statements
+        </description>
+        <priority>3</priority>
+        
+        <example>
+            <![CDATA[
+                public void doSomething() {
+	                while (true){
+	                }
+                }
+            ]]>
+        </example>
+    </rule>
 </ruleset>

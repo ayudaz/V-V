@@ -32,6 +32,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/pmd/target/pmd-5.0.5-jar-with-dependencies.jar"/>
+	<classpathentry exported="true" kind="lib" path="/tp3-vv/target/pmd-5.0.5-jar-with-dependencies.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/tp3-vv"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
