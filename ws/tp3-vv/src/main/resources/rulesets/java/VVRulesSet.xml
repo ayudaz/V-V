@@ -22,10 +22,10 @@
             ]]>
         </example>
     </rule>
-    <rule name="ForLoopsMustNotBeNested"
+    <rule name="ForLoopsMustNotBeNestedRule"
         message="Avoid using nested 'for' statements"
          language="java"
-        class="vv.tp3.ForLoopsMustNotBeNested">
+        class="vv.tp3.ForLoopsMustNotBeNestedRule">
         <description>
             Avoid using nested 'for' statements
         </description>
@@ -41,12 +41,31 @@
                 }
             ]]>
         </example>
-    </rule><rule name="WhileLoopsMustNotUseBooleanDirectly"
+    </rule>
+    <rule name="WhileLoopsMustNotUseBooleanDirectlyRule"
         message="Avoid using boolean directly on 'while' statements"
          language="java"
-        class="vv.tp3.WhileLoopsMustNotUseBooleanDirectly">
+        class="vv.tp3.WhileLoopsMustNotUseBooleanDirectlyRule">
         <description>
             Avoid using boolean directly on 'while' statements
+        </description>
+        <priority>3</priority>
+        
+        <example>
+            <![CDATA[
+                public void doSomething() {
+	                while (true){
+	                }
+                }
+            ]]>
+        </example>
+    </rule>
+     <rule name="WhileLoopsMustNotUseBooleanDirectlyWithoutEscapeRule"
+        message="Avoid using boolean directly on 'while' statements without escape"
+         language="java"
+        class="vv.tp3.WhileLoopsMustNotUseBooleanDirectlyWithoutEscapeRule">
+        <description>
+            Avoid using boolean directly on 'while' statements without escape
         </description>
         <priority>3</priority>
         

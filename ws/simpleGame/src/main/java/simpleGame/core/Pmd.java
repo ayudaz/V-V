@@ -8,6 +8,7 @@ public class Pmd {
 				System.out.println("toto");
 				while(true){
 					x=1;
+					return;
 				}
 			}
 		}

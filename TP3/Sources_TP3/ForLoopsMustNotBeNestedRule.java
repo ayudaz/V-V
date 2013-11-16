@@ -9,7 +9,7 @@ import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
  * @author Lelievre Thomas & Leloup Florian
  *
  */
-public class ForLoopsMustNotBeNested extends AbstractJavaRule {
+public class ForLoopsMustNotBeNestedRule extends AbstractJavaRule {
 
 	public Object visit(ASTForStatement node, Object data){
 		if(node.hasDescendantOfType(ASTForStatement.class)){
